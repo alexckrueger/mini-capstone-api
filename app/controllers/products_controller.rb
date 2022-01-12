@@ -5,24 +5,16 @@ class ProductsController < ApplicationController
     render json: products.as_json
   end
 
-  def liver
-    products = Product.find_by(name: "liver")
-    render json: products.as_json
+  def product
+    product = params[:product]
+    product_info = Product.find_by(name: product)
+    render json: product_info
   end
 
-  def heart
-    products = Product.find_by(name: "heart")
-    render json: products.as_json
-  end
-
-  def kidney
-    products = Product.find_by(name: "kidney")
-    render json: products.as_json
-  end
-
-  def brain
-    products = Product.find_by(name: "brain")
-    render json: products.as_json
+  def find_product
+    product = params[:product]
+    product_info = Product.find_by(name: product)
+    render json: product_info
   end
 
 end
