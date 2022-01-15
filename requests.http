@@ -23,7 +23,7 @@ PATCH http://localhost:3000/products/2
 Content-Type: application/json
 
 {
-  "name": "heart"
+  "image_url": "https://cdn.vox-cdn.com/thumbor/hRa88_G-3n0J7ivEG65WYcjfPeo=/46x0:1054x672/1400x1050/filters:focal(46x0:1054x672):format(jpeg)/cdn.vox-cdn.com/assets/2368289/heart_shutterstock.jpg"
 }
 
 ### Delete action
