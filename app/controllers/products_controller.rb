@@ -30,6 +30,12 @@ class ProductsController < ApplicationController
     product.description = params[:description] || product.description
     product.save
     render json: product
+  end
+
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    render json: {message: "Product successfully obliterated."}
     
   end
 
