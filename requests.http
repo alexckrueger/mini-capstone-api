@@ -1,0 +1,27 @@
+### All recipes - index
+
+GET http://localhost:3000/products
+
+### 1 recipe
+
+GET http://localhost:3000/products/2
+
+### Create action
+
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+  "name": "useless organs",
+  "price": "6",
+  "description": "I just really don't wanna waste them" 
+}
+
+### Update action
+
+PATCH http://localhost:3000/products/2
+Content-Type: application/json
+
+{
+  "name": "heart"
+}

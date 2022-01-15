@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  get "/black_market" => "products#black_market_method"
+  get "/products" => "products#index"
+  post "/products" => "products#create"
+  get "/products/:id" => "products#show"
+  patch "/products/:id" => "products#edit"
 
-  get "black_market/:product" => "products#product"
-
-  get "black_market_product" => "products#find_product"
-
+  
 end
