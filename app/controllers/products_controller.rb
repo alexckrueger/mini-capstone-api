@@ -2,13 +2,12 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.all
-    render json: products.as_json
+    render json: products
   end
 
   def show
-    product = params[:id]
-    product_info = Product.find_by(id: product)
-    render json: product_info.as_json(methods: [:is_discounted?, :tax, :total])
+    product = Product.find(params[:id])
+    render json: product
   end
 
   def create
@@ -36,7 +35,6 @@ class ProductsController < ApplicationController
     product = Product.find(params[:id])
     product.destroy
     render json: {message: "Product successfully obliterated."}
-    
   end
 
 end
