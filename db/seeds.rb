@@ -10,3 +10,6 @@
 # Product.create(name: "heart", price: 150, description: "It was working when I took it out")
 # Product.create(name: "kidney", price: 55, description: "Can not guarantee working condition")
 # Product.create(name: "brain", price: 6000, description: "When you really need to delete a memory")
+
+# product = Product.create(name: "eyeball", price: 9, description: "an eye for an eye?")
+# product.save
