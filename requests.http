@@ -12,18 +12,20 @@ POST http://localhost:3000/products
 Content-Type: application/json
 
 {
-  "name": "useless organs",
-  "price": "6",
-  "description": "I just really don't wanna waste them" 
+  "name": " ",
+  "description": "yessir",
+  "price": 10,
+  "quantity": "yellow"
 }
 
 ### Update action
 
-PATCH http://localhost:3000/products/2
+PATCH http://localhost:3000/products/8
 Content-Type: application/json
 
 {
-  "image_url": "https://cdn.vox-cdn.com/thumbor/hRa88_G-3n0J7ivEG65WYcjfPeo=/46x0:1054x672/1400x1050/filters:focal(46x0:1054x672):format(jpeg)/cdn.vox-cdn.com/assets/2368289/heart_shutterstock.jpg"
+  "quantity": 9,
+  "image_url": "https://previews.123rf.com/images/lineartestpilot/lineartestpilot1802/lineartestpilot180281961/95638653-cartoon-eyeball-laughing.jpg" 
 }
 
 ### Delete action

@@ -18,19 +18,28 @@ class ProductsController < ApplicationController
       description: params[:description],
       quantity: params[:quantity]      
     )
-    product.save
-    render json: product
+
+    if product.save
+      render json: product
+    else
+      render json: {errors: product.errors.full_messages, message: "You make me sad."}, status: 422
+    end
   end
 
   def update
     product = Product.find(params[:id])
+
     product.name = params[:name] || product.name
     product.price = params[:price] || product.price
     product.image_url = params[:image_url] || product.image_url
     product.description = params[:description] || product.description
     product.quantity = params[:quantity] || product.quantity
-    product.save
-    render json: product
+
+    if product.save
+      render json: product
+    else
+      render json: {errors: product.errors.full_messages, message: "You make me sad."}, status: 422
+    end
   end
 
   def destroy
