@@ -11,6 +11,8 @@ class Product < ApplicationRecord
     price < 10
   end
 
+  scope :is_discounted, -> { where("price < ?", 10)}
+
   def tax
     (price * 0.09).round(2)
   end
@@ -21,9 +23,3 @@ class Product < ApplicationRecord
 
 end
 
-# Validations:
-# name presence/uniqueness
-# price presence/numericality (not a negative number)
-# image_url presence
-# description length range (in) between 10 - 500
-# quantity presence

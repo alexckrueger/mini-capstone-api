@@ -2,6 +2,24 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.all
+
+    if params[:search]
+      products = products.where("name iLIKE ?", "%#{params[:search]}%")
+    end
+
+    if params[:sort] 
+      products = products.order(:price)
+      if params[:sort_order] == "desc"
+        products = products.reverse
+      end
+    else
+      product = product.order(:id)
+    end
+
+    if params[:discount] == "true"
+      products = products.where("price < 10")
+    end
+
     render json: products
   end
 
