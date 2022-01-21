@@ -3,22 +3,23 @@ class ProductsController < ApplicationController
   def index
     products = Product.all
 
-    if params[:search]
-      products = products.where("name iLIKE ?", "%#{params[:search]}%")
-    end
+    # FIX this after class :(
+    # if params[:search]
+    #   products = products.where("name iLIKE ?", "%#{params[:search]}%")
+    # end
 
-    if params[:sort] 
-      products = products.order(:price)
-      if params[:sort_order] == "desc"
-        products = products.reverse
-      end
-    else
-      product = product.order(:id)
-    end
+    # if params[:sort] 
+    #   products = products.order(:price)
+    #   if params[:sort_order] == "desc"
+    #     products = products.reverse
+    #   end
+    # else
+    #   product = product.order(:id)
+    # end
 
-    if params[:discount] == "true"
-      products = products.where("price < 10")
-    end
+    # if params[:discount] == "true"
+    #   products = products.where("price < 10")
+    # end
 
     render json: products
   end
@@ -32,7 +33,6 @@ class ProductsController < ApplicationController
     product = Product.new(
       name: params[:name],
       price: params[:price],
-      image_url: params[:image_url],
       description: params[:description],
       quantity: params[:quantity]      
     )
@@ -49,7 +49,6 @@ class ProductsController < ApplicationController
 
     product.name = params[:name] || product.name
     product.price = params[:price] || product.price
-    product.image_url = params[:image_url] || product.image_url
     product.description = params[:description] || product.description
     product.quantity = params[:quantity] || product.quantity
 

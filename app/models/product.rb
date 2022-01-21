@@ -2,10 +2,10 @@ class Product < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :price, numericality: { greater_than: 0 }
-  validates :image_url, presence: true
   validates :description, presence: true, length: { in: 10..500 }
   validates :quantity, presence: true, numericality: { only_integer: true}
 
+  has_many :images
   belongs_to :supplier
 
 
