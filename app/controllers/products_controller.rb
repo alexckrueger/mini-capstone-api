@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
 
   def show
     product = Product.find(params[:id])
-    render json: product
+    render json: {product: product, current_user: current_user}
   end
 
   def create
@@ -34,7 +34,8 @@ class ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      quantity: params[:quantity]      
+      quantity: params[:quantity],
+      supplier_id: params[:supplier_id]      
     )
 
     if product.save

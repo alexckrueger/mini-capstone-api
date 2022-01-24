@@ -80,8 +80,22 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "name": "testing tester number 2",
-  "email": "test2@test.com",
+  "name": "testing tester number 5",
+  "email": "test5@test.com",
   "password": "password",
   "password_confirmation": "password"
 }
+
+### Sessions create (login)
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password"
+}
+
+### Lookie here I'm a real user
+GET http://localhost:3000/products/10
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMxNDIyNDh9.tEtgStVD9q2uaRl09FVtOhyaRPy0G-ZUn198cfnvR2c
+Content-Type: application/json
