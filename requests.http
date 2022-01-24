@@ -75,4 +75,13 @@ Content-Type: application/json
 
 DELETE http://localhost:3000/suppliers/4
 
-###
+### Users create (signup)
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "testing tester number 2",
+  "email": "test2@test.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
