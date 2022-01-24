@@ -8,12 +8,25 @@ class Product < ApplicationRecord
   has_many :images
   belongs_to :supplier
 
+  scope :title_search, ->(search_terms) { where("name ILIKE ?", "%#{search_terms}%") if search_terms }
+
+  scope :discounted, ->(check_discount) { where("price < ?", 10) if check_discount }
+
+  scope :sorted, ->(sort, sort_order) {
+    if sort == "price"
+      if sort_order == "desc"
+        order(price: :desc)
+      else
+        order(:price)
+      end
+    else
+      order(id: :asc)
+    end
+  }
 
   def is_discounted?
     price < 10
   end
-
-  scope :is_discounted, -> { where("price < ?", 10)}
 
   def tax
     (price * 0.09).round(2)

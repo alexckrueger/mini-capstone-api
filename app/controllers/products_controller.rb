@@ -2,25 +2,9 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.all
-
-    # FIX this after class :(
-    # if params[:search]
-    #   products = products.where("name iLIKE ?", "%#{params[:search]}%")
-    # end
-
-    # if params[:sort] 
-    #   products = products.order(:price)
-    #   if params[:sort_order] == "desc"
-    #     products = products.reverse
-    #   end
-    # else
-    #   product = product.order(:id)
-    # end
-
-    # if params[:discount] == "true"
-    #   products = products.where("price < 10")
-    # end
-
+    .title_search(params[:search])
+    .discounted(params[:discount])
+    .sorted(params[:sort], params[:sort_order])
     render json: products
   end
 
