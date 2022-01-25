@@ -99,3 +99,24 @@ Content-Type: application/json
 GET http://localhost:3000/products/10
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMxNDIyNDh9.tEtgStVD9q2uaRl09FVtOhyaRPy0G-ZUn198cfnvR2c
 Content-Type: application/json
+
+### Create order
+
+POST http://localhost:3000/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMyMjI3NTl9.Oi2jjUHRtMYYR-IFOckJLmT3XD5b_zS90SUI14zkTtQ
+
+{
+  "product_id": 2,
+  "quantity": 5
+}
+
+### Order show
+
+GET http://localhost:3000/orders/5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMyMjI3NTl9.Oi2jjUHRtMYYR-IFOckJLmT3XD5b_zS90SUI14zkTtQ
+
+
+### Orders index
+GET http://localhost:3000/orders

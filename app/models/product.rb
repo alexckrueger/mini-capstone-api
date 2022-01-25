@@ -7,6 +7,7 @@ class Product < ApplicationRecord
 
   has_many :images
   belongs_to :supplier
+  has_many :orders
 
   scope :title_search, ->(search_terms) { where("name ILIKE ?", "%#{search_terms}%") if search_terms }
 
