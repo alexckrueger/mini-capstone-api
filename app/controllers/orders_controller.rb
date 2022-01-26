@@ -1,26 +1,35 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user, except: [:show]
 
   def index
-    orders = Order.all
-    render json: orders
+    if current_user
+      orders = current_user.orders
+      render json: orders
+    else
+      render json: {message: "log in fool"}, status: :unauthorized
+    end
   end
 
   def create
-    product = Product.find(params[:product_id])
-    order = Order.new(
-      product_id: params[:product_id],
-      user_id: current_user.id,
-      quantity: params[:quantity],
-      subtotal: params[:quantity] * product.price,
-      tax: params[:quantity] * product.tax,
-      total: params[:quantity] * product.total
-    )
-    order.save
-    render json: order
+    if current_user
+      product = Product.find(params[:product_id])
+      order = Order.new(
+        product_id: params[:product_id],
+        user_id: current_user.id,
+        quantity: params[:quantity],
+        subtotal: params[:quantity] * product.price,
+        tax: params[:quantity] * product.tax,
+        total: params[:quantity] * product.total
+      )
+      order.save
+      render json: order
+    else
+      render json: {message: "log in fool"}, status: :unauthorized
+    end
   end
 
   def show
-    order = Order.where(user_id: current_user.id)
+    order = current_user.orders.find(params[:id])
     render json: order
   end
 

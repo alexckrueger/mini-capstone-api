@@ -1,40 +1,45 @@
+@domain = http://localhost:3000
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMzMTAxMTZ9.VRcjg9x0fvn6K3JbiweMWqRnejsaoOksWLCD9PRkK_U
+
 ### All recipes - index
 
-GET http://localhost:3000/products
+GET {{ domain }}/products
 
 ### index with params
 
-GET http://localhost:3000/products?discount=true
+GET {{ domain }}/products?discount=true
 
 ### another index with params
 
-GET http://localhost:3000/products?search=liver
+GET {{ domain }}/products?search=liver
 
 ###
 
-GET http://localhost:3000/products?sort=price&sort_order=desc
+GET {{ domain }}/products?sort=price&sort_order=desc
 
 
 
 ### 1 recipe
 
-GET http://localhost:3000/products/8
+GET {{ domain }}/products/8
 
-### Create action
+### Create product
 
-POST http://localhost:3000/products
+POST {{ domain }}/products
 Content-Type: application/json
+Authorization: Bearer {{ jwt }}
 
 {
-  "name": " ",
-  "description": "yessir",
+  "name": "Yoooo it's a test3 lol",
+  "description": "yessir space space",
   "price": 10,
-  "quantity": "yellow"
+  "quantity": 45,
+  "supplier_id": 1
 }
 
 ### Update action
 
-PATCH http://localhost:3000/products/8
+PATCH {{ domain }}/products/8
 Content-Type: application/json
 
 {
@@ -44,16 +49,17 @@ Content-Type: application/json
 
 ### Delete action
 
-DELETE http://localhost:3000/products/7
+DELETE {{ domain }}/products/10
+Authorization: Bearer {{ jwt }}
 
 
 ### SUPPLIERS
 
-GET http://localhost:3000/suppliers
+GET {{ domain }}/suppliers
 
 ###
 
-POST http://localhost:3000/suppliers
+POST {{ domain }}/suppliers
 Content-Type: application/json
 
 {
@@ -64,7 +70,7 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:3000/suppliers/3
+PATCH {{ domain }}/suppliers/6
 Content-Type: application/json
 
 {
@@ -73,10 +79,10 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/suppliers/4
+DELETE {{ domain }}/suppliers/6
 
 ### Users create (signup)
-POST http://localhost:3000/users
+POST {{ domain }}/users
 Content-Type: application/json
 
 {
@@ -87,36 +93,36 @@ Content-Type: application/json
 }
 
 ### Sessions create (login)
-POST http://localhost:3000/sessions
+POST {{ domain }}/sessions
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "test2@test.com",
   "password": "password"
 }
 
 ### Lookie here I'm a real user
-GET http://localhost:3000/products/10
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMxNDIyNDh9.tEtgStVD9q2uaRl09FVtOhyaRPy0G-ZUn198cfnvR2c
+GET {{ domain }}/products/10
 Content-Type: application/json
+Authorization: Bearer {{ jwt }}
 
 ### Create order
 
-POST http://localhost:3000/orders
+POST {{ domain }}/orders
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMyMjI3NTl9.Oi2jjUHRtMYYR-IFOckJLmT3XD5b_zS90SUI14zkTtQ
+Authorization: Bearer {{ jwt }}
 
 {
-  "product_id": 2,
-  "quantity": 5
+  "product_id": 4,
+  "quantity": 8
 }
 
 ### Order show
 
-GET http://localhost:3000/orders/5
+GET {{ domain }}/orders/6
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NDMyMjI3NTl9.Oi2jjUHRtMYYR-IFOckJLmT3XD5b_zS90SUI14zkTtQ
-
+Authorization: Bearer {{ jwt }}
 
 ### Orders index
-GET http://localhost:3000/orders
+GET {{ domain }}/orders
+Authorization: Bearer {{ jwt }}
