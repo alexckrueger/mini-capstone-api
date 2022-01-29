@@ -12,16 +12,28 @@ class OrdersController < ApplicationController
 
   def create
     if current_user
-      product = Product.find(params[:product_id])
+      carted_order = current_user.carted_products.where(status: "carted")
+
+      subtotal = 0
+      carted_order.each do |carted_product|
+        subtotal += (carted_product.product.price * carted_product.quantity)
+      end
+
       order = Order.new(
-        product_id: params[:product_id],
         user_id: current_user.id,
-        quantity: params[:quantity],
-        subtotal: params[:quantity] * product.price,
-        tax: params[:quantity] * product.tax,
-        total: params[:quantity] * product.total
+        subtotal: subtotal,
+        tax: subtotal * 0.09,
+        total: subtotal + (subtotal + 0.09)
       )
-      order.save
+
+      order.save  # price should be $12,110 if i did this right
+
+      carted_order.each do |carted_product|
+        carted_product.status = "purchased"
+        carted_product.order_id = order.id
+        carted_product.save
+      end
+
       render json: order
     else
       render json: {message: "log in fool"}, status: :unauthorized

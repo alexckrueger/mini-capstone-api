@@ -1,5 +1,5 @@
 @domain = http://localhost:3000
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDMzMTAxMTZ9.VRcjg9x0fvn6K3JbiweMWqRnejsaoOksWLCD9PRkK_U
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDM1MTkyNTF9.6aQSdn3PubkU3o1u53UHQCW5f5blqiSAQZVcOdj8q6Q
 
 ### All recipes - index
 
@@ -109,13 +109,7 @@ Authorization: Bearer {{ jwt }}
 ### Create order
 
 POST {{ domain }}/orders
-Content-Type: application/json
 Authorization: Bearer {{ jwt }}
-
-{
-  "product_id": 4,
-  "quantity": 8
-}
 
 ### Order show
 
@@ -126,3 +120,20 @@ Authorization: Bearer {{ jwt }}
 ### Orders index
 GET {{ domain }}/orders
 Authorization: Bearer {{ jwt }}
+
+### Create CartedProduct
+POST {{ domain }}/carted_products
+Content-Type: application/json
+Authorization: Bearer {{ jwt }}
+
+{
+  "product_id": 8,
+  "quantity": 3
+}
+
+### CartedProducts index
+GET {{ domain }}/carted_products
+Authorization: Bearer {{ jwt }}
+
+### CartedProducts destroy
+DELETE {{ domain }}/carted_products/5
