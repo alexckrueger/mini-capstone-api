@@ -1,5 +1,5 @@
 @domain = http://localhost:3000
-@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDM1MTkyNTF9.6aQSdn3PubkU3o1u53UHQCW5f5blqiSAQZVcOdj8q6Q
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2NDQ5NTk0MDV9.L4u2CN_PyQaK9hs4l5gRt3lmgtdAd1sz6jAE0Awqsjc
 
 ### All recipes - index
 
@@ -39,8 +39,9 @@ Authorization: Bearer {{ jwt }}
 
 ### Update action
 
-PATCH {{ domain }}/products/8
+PATCH {{ domain }}/products/16
 Content-Type: application/json
+Authorization: Bearer {{ jwt }}
 
 {
   "quantity": 9,
@@ -49,13 +50,13 @@ Content-Type: application/json
 
 ### Delete action
 
-DELETE {{ domain }}/products/10
+DELETE {{ domain }}/products/16
 Authorization: Bearer {{ jwt }}
 
 
 ### SUPPLIERS
 
-GET {{ domain }}/suppliers
+GET {{ domain }}/suppliers/2
 
 ###
 
@@ -86,8 +87,8 @@ POST {{ domain }}/users
 Content-Type: application/json
 
 {
-  "name": "testing tester number 5",
-  "email": "test5@test.com",
+  "name": "testing tester number 6",
+  "email": "test6@test.com",
   "password": "password",
   "password_confirmation": "password"
 }
@@ -137,3 +138,7 @@ Authorization: Bearer {{ jwt }}
 
 ### CartedProducts destroy
 DELETE {{ domain }}/carted_products/5
+
+### Images Index
+
+GET {{ domain }}/images?product_id=5
